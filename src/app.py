@@ -45,6 +45,18 @@ def handle_members(member_id):
         response_body['message'] = 'Usuario seleccionado'
         response_body['results'] = member_id
         return response_body, 200
+    
+    if request.method == 'PUT':
+        jackson_family[member_id] = request.json
+        response_body['message'] = f'Member {member_id} edited'
+        response_body['results'] = jackson_family[member_id]
+        return response_body, 200
+
+    if request.method == 'DELETE':
+        jackson_family.delete_member(member_id)
+        response_body = {"message": "Member deleted"}
+        return jsonify(response_body), 200
+
 
 # @app.route('/members', methods=['POST'])
 # def handle_members():
