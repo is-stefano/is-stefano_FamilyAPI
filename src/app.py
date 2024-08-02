@@ -51,7 +51,7 @@ def handle_members(member_id):
         response_body['message'] = f'Member {member_id} edited'
         response_body['results'] = jackson_family[member_id]
         return response_body, 200
-
+    
     if request.method == 'DELETE':
         jackson_family.delete_member(member_id)
         response_body = {"message": "Member deleted"}
